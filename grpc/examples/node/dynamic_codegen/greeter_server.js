@@ -16,16 +16,37 @@
  *
  */
 
-var PROTO_PATH = __dirname + '/../../protos/helloworld.proto';
+var PROTO_PATH = __dirname + '/../../protos/protosTest.proto';
 
 var grpc = require('grpc');
-var hello_proto = grpc.load(PROTO_PATH).helloworld;
+var protoTest = grpc.load(PROTO_PATH).helloworld;
 
 /**
  * Implements the SayHello RPC method.
  */
-function sayHello(call, callback) {
-  callback(null, {message: 'Hello ' + call.request.name});
+
+function VoidMetodoSemParametros(call, callback) {
+  callback(null, {});
+}
+
+function EnviaIntRecebeInt(call, callback) {
+  callback(null, {message: 5 + call.request.name});
+}
+
+function EnviaLongRecebeLong(call, callback) {
+  callback(null, {message: 5000000 + call.request.message});
+}
+
+function EnviaLong8RecebeLong(call, callback) {
+  callback(null, {message: 500000000000});
+}
+
+function EnviaStringPotencia10RecebeString(call, callback) {
+  callback(null, {message: 'Resposta em forma de String'});
+}
+
+function EnviaTipoComplexoRecebeTipoComplexo(call, callback){
+  callback(null, {message: 'Resposta em forma de String'});
 }
 
 /**
@@ -34,9 +55,13 @@ function sayHello(call, callback) {
  */
 function main() {
   var server = new grpc.Server();
-  server.addService(hello_proto.Greeter.service, {sayHello: sayHello});
+  server.addService(protoTest.Greeter.service, {EnviaIntRecebeInt: EnviaIntRecebeInt, VoidMetodoSemParametros: VoidMetodoSemParametros,
+     EnviaLongRecebeLong: EnviaLongRecebeLong, EnviaLong8RecebeLong:EnviaLong8RecebeLong,
+     EnviaStringPotencia10RecebeString:EnviaStringPotencia10RecebeString,
+     EnviaTipoComplexoRecebeTipoComplexo:EnviaTipoComplexoRecebeTipoComplexo});
   server.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
   server.start();
+  console.log("Iniciou")
 }
 
 main();

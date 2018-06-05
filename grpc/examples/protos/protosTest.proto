@@ -23,16 +23,58 @@ package helloworld;
 
 // The greeting service definition.
 service Greeter {
-  // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc VoidMetodoSemParametros (Void) returns (Void) {}
+  
+  rpc EnviaIntRecebeInt (HelloRequest) returns (HelloReply) {}
+
+  rpc EnviaLongRecebeLong (Long) returns (Long) {}
+
+  rpc EnviaLong8RecebeLong (Long8) returns (Long) {}
+
+  rpc EnviaStringPotencia10RecebeString (String) returns (String) {}
+
+  rpc EnviaTipoComplexoRecebeTipoComplexo (TipoComplexo) returns (String) {}
+
 }
 
 // The request message containing the user's name.
 message HelloRequest {
-  string name = 1;
+  int32 name = 1;
 }
 
 // The response message containing the greetings
 message HelloReply {
+  int32 message = 1;
+}
+
+message Void{
+}
+
+message Long{
+  int64 message = 1;
+}
+
+message Long8{
+  int64 message1 = 1;
+  int64 message2 = 2;
+  int64 message3 = 3;
+  int64 message4 = 4;
+  int64 message5 = 5;
+  int64 message6 = 6;
+  int64 message7 = 7;
+  int64 message8 = 8;
+}
+
+message String{
   string message = 1;
 }
+
+message ComplexoNivel2{
+  string message1 = 1;
+  string message2 = 2;
+}
+
+message TipoComplexo{
+  ComplexoNivel2 messagem = 1;
+}
+

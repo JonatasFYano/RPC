@@ -1,0 +1,6 @@
+Tipos de Valores .proto:
+    https://developers.google.com/protocol-buffers/docs/proto3#simple
+gRPC - node:
+    https://grpc.io/docs/tutorials/basic/node.html#example-code-and-setup
+Outros RPCs:
+    https://en.wikipedia.org/wiki/Remote_procedure_call#General
