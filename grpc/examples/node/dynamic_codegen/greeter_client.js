@@ -20,6 +20,8 @@ var PROTO_PATH = __dirname + '/../../protos/protosTest.proto';
 
 var grpc = require('grpc');
 var protoTest = grpc.load(PROTO_PATH).helloworld;
+var fs = require('fs');
+var escrita = '';
 
 function main() {
   for(ia = 0 ; ia < 20 ; ia++){
@@ -34,7 +36,9 @@ function main() {
   client.VoidMetodoSemParametros({}, function(err, response) {});
   diff = process.hrtime(time);
   console.log(`#VoidMetodoSemParametros levou ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC} milissegundos`);
-
+  escrita = escrita + `#VoidMetodoSemParametros levou ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC} milissegundos\n`
+  
+      console.log("Arquivo salvo");
 
 //Cenário onde passamos um Integer e recebemos um Integer
   let variavel;
@@ -44,6 +48,7 @@ function main() {
   client.EnviaIntRecebeInt({name: variavel}, function(err, response) {});
   diff = process.hrtime(time);
   console.log(`#EnviaIntRecebeInt levou ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC} milissegundos`);
+  escrita = escrita + `#EnviaIntRecebeInt levou ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC} milissegundos\n`
 
 
   //Cenário onde passamos um Long e recebemos um Long
@@ -53,6 +58,7 @@ function main() {
   client.EnviaLongRecebeLong({message: variavelLong}, function(err, response) {});
   diff = process.hrtime(time);
   console.log(`#EnviaLongRecebeLong levou ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC} milissegundos`);
+  escrita = escrita + `#EnviaLongRecebeLong levou ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC} milissegundos\n`
 
 
   //Cenário onde passamos 8 variáveis Long e recebemos um Long
@@ -71,6 +77,7 @@ function main() {
                               message7: variavelLong7, message8: variavelLong8}, function(err, response) {});
   diff = process.hrtime(time);
   console.log(`#EnviaLong8RecebeLong levou ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC} milissegundos`);
+  escrita = escrita + `#EnviaLong8RecebeLong levou ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC} milissegundos\n`
 
 
  //Cenário onde passamos strings com valor de potências de 10 MUITO grandes e recebemos uma string com uma frase
@@ -84,6 +91,7 @@ function main() {
     });
     diff = process.hrtime(time);
     console.log(`#EnviaStringPotencia10RecebeString levou ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC} milissegundos`);
+    escrita = escrita + `#EnviaStringPotencia10RecebeString levou ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC} milissegundos\n`
   }
 
   // let var1 = 'Alguma String'
@@ -96,13 +104,18 @@ function main() {
   client.EnviaTipoComplexoRecebeTipoComplexo({messagem: varComplexo}, function(err, response) {});
   diff = process.hrtime(time);
   console.log(`#EnviaTipoComplexoRecebeTipoComplexo levou ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC} milissegundos`);
+  escrita = escrita + `#EnviaTipoComplexoRecebeTipoComplexo levou ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC} milissegundos\n`
+}
+fs.writeFile("teste.txt", escrita, function(erro) {
+  
+  if(erro) {
+      throw erro;
+  }
+});
 
-
-
+}
 function _criaStringPotenciaDe10(i){
-    return Math.pow(10, i).toString();
-}
-}
+  return Math.pow(10, i).toString();
 }
 
 main();
