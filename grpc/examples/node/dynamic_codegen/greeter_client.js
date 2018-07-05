@@ -94,24 +94,97 @@ function main() {
     escrita = escrita + `#EnviaStringPotencia10RecebeString ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}\n`
   }
 
-  // let var1 = 'Alguma String'
-  var arrayGrande = [];
-  _criaArrayGrande(arrayGrande);
-  console.log("************************")
-  time = process.hrtime();
-  client.EnviaArrayGiganteRecebeArrayGigante({message: arrayGrande}, function(err, response) {});
-  diff = process.hrtime(time);
-  console.log(`#EnviaArrayGiganteRecebeArrayGigante ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}`);
-  escrita = escrita + `#EnviaArrayGiganteRecebeArrayGigante ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}\n`
+  //*******************Arrays***************************************
 
-  var arrayGrande = [];
-  _criaArrayGrande(arrayGrande);
-  console.log("************************")
-  time = process.hrtime();
-  client.EnviaArrayGiganteRecebeString({message: arrayGrande}, function(err, response) {});
-  diff = process.hrtime(time);
-  console.log(`#EnviaArrayGiganteRecebeString ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}`);
-  escrita = escrita + `#EnviaArrayGiganteRecebeString ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}\n`
+    // cria um array de inteiros de 100 posições e recebe o array de retorno
+    var arrayGrande = [];
+    let j = 100 
+    _criaArrayGrande(arrayGrande, j);
+    console.log("************************")
+    time = process.hrtime();
+    client.EnviaArrayIntRecebeArray({message: arrayGrande}, function(err, response) {});
+    diff = process.hrtime(time);
+    console.log(`#EnviaArray100IntRecebeArray ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}`);
+    escrita = escrita + `#EnviaArray100IntRecebeArray ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}\n`
+
+    // cria um array de inteiros de 100 posições e recebe um único inteiro de retorno
+    arrayGrande = [];
+    j = 100
+    _criaArrayGrande(arrayGrande, j);
+    console.log("************************")
+    time = process.hrtime();
+    client.EnviaArrayIntRecebeInt({message: arrayGrande}, function(err, response) {});
+    diff = process.hrtime(time);
+    console.log(`#EnviaArray100IntRecebeInt ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}`);
+    escrita = escrita + `#EnviaArray100Int100RecebeInt ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}\n`
+
+    // cria um array de inteiros de 1000 posições e recebe o array de retorno
+    arrayGrande = [];
+    j = 1000 
+    _criaArrayGrande(arrayGrande, j);
+    console.log("************************")
+    time = process.hrtime();
+    client.EnviaArrayIntRecebeArray({message: arrayGrande}, function(err, response) {});
+    diff = process.hrtime(time);
+    console.log(`#EnviaArray1000IntRecebeArray ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}`);
+    escrita = escrita + `#EnviaArray1000Int0RecebeArray ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}\n`
+  
+     // cria um array de inteiros de 1000 posições e recebe um único inteiro de retorno
+    arrayGrande = [];
+    j = 1000
+    _criaArrayGrande(arrayGrande, j);
+    console.log("************************")
+    time = process.hrtime();
+    client.EnviaArrayIntRecebeInt({message: arrayGrande}, function(err, response) {});
+    diff = process.hrtime(time);
+    console.log(`#EnviaArray1000IntRecebeInt ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}`);
+    escrita = escrita + `#EnviaArray1000IntRecebeInt ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}\n`
+
+    // cria um array de inteiros de 10000 posições e recebe o array de retorno
+    arrayGrande = [];
+    j = 10000 
+    _criaArrayGrande(arrayGrande, j);
+    console.log("************************")
+    time = process.hrtime();
+    client.EnviaArrayIntRecebeArray({message: arrayGrande}, function(err, response) {});
+    diff = process.hrtime(time);
+    console.log(`#EnviaArray10000IntRecebeArray ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}`);
+    escrita = escrita + `#EnviaArray10000Int0RecebeArray ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}\n`
+  
+      // cria um array de inteiros de 10000 posições e recebe um único inteiro de retorno
+    arrayGrande = [];
+    j = 10000
+    _criaArrayGrande(arrayGrande, j);
+    console.log("************************")
+    time = process.hrtime();
+    client.EnviaArrayIntRecebeInt({message: arrayGrande}, function(err, response) {});
+    diff = process.hrtime(time);
+    console.log(`#EnviaArray10000IntRecebeInt ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}`);
+    escrita = escrita + `#EnviaArray10000IntRecebeInt ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}\n`
+
+    // cria um array de inteiros de 100000 posições e recebe o array de retorno
+    arrayGrande = [];
+    j = 100000 
+    _criaArrayGrande(arrayGrande, j);
+    console.log("************************")
+    time = process.hrtime();
+    client.EnviaArrayIntRecebeArray({message: arrayGrande}, function(err, response) {});
+    diff = process.hrtime(time);
+    console.log(`#EnviaArray100000IntRecebeArray ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}`);
+    escrita = escrita + `#EnviaArray100000Int0RecebeArray ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}\n`
+  
+      // cria um array de inteiros de 100000 posições e recebe um único inteiro de retorno
+    arrayGrande = [];
+    j = 100000
+    _criaArrayGrande(arrayGrande, j);
+    console.log("************************")
+    time = process.hrtime();
+    client.EnviaArrayIntRecebeInt({message: arrayGrande}, function(err, response) {});
+    diff = process.hrtime(time);
+    console.log(`#EnviaArray100000IntRecebeInt ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}`);
+    escrita = escrita + `#EnviaArray100000IntRecebeInt ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}\n`
+
+
   
 }
 fs.writeFile("tempos_gRPC.txt", escrita, function(erro) {
@@ -126,8 +199,8 @@ function _criaStringPotenciaDe10(i){
   return Math.pow(10, i).toString();
 }
 
-function _criaArrayGrande(arrayGrande){
-  for(i = 0; i<=100000; i++){
+function _criaArrayGrande(arrayGrande, j){
+  for(i = 0; i<=j; i++){
     arrayGrande.push(i);
   }
 }
