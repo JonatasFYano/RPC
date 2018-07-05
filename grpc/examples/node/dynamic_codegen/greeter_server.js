@@ -45,9 +45,15 @@ function EnviaStringPotencia10RecebeString(call, callback) {
   callback(null, {message: 'Resposta em forma de String'});
 }
 
-function EnviaTipoComplexoRecebeTipoComplexo(call, callback){
-  callback(null, {message: 'Resposta em forma de String'});
+function EnviaArrayGiganteRecebeString(call, callback){
+  callback(null, {message: "Resposta em forma de String"});
 }
+
+function EnviaArrayGiganteRecebeArrayGigante(call, callback){
+  callback(null, {message: call.request});
+}
+
+
 
 /**
  * Starts an RPC server that receives requests for the Greeter service at the
@@ -58,7 +64,8 @@ function main() {
   server.addService(protoTest.Greeter.service, {EnviaIntRecebeInt: EnviaIntRecebeInt, VoidMetodoSemParametros: VoidMetodoSemParametros,
      EnviaLongRecebeLong: EnviaLongRecebeLong, EnviaLong8RecebeLong:EnviaLong8RecebeLong,
      EnviaStringPotencia10RecebeString:EnviaStringPotencia10RecebeString,
-     EnviaTipoComplexoRecebeTipoComplexo:EnviaTipoComplexoRecebeTipoComplexo});
+     EnviaArrayGiganteRecebeString:EnviaArrayGiganteRecebeString,
+     EnviaArrayGiganteRecebeArrayGigante:EnviaArrayGiganteRecebeArrayGigante});
   server.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
   server.start();
   console.log("Iniciou")

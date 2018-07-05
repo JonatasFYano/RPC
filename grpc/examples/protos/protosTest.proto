@@ -33,7 +33,9 @@ service Greeter {
 
   rpc EnviaStringPotencia10RecebeString (String) returns (String) {}
 
-  rpc EnviaTipoComplexoRecebeTipoComplexo (TipoComplexo) returns (String) {}
+  rpc EnviaArrayGiganteRecebeString (TipoComplexo) returns (String) {}
+
+  rpc EnviaArrayGiganteRecebeArrayGigante (TipoComplexo) returns (TipoComplexo) {}
 
 }
 
@@ -69,12 +71,7 @@ message String{
   string message = 1;
 }
 
-message ComplexoNivel2{
-  string message1 = 1;
-  string message2 = 2;
-}
-
 message TipoComplexo{
-  ComplexoNivel2 messagem = 1;
+  repeated int32 message = 1;
 }
 
