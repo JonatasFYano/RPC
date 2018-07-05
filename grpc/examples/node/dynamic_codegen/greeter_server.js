@@ -30,11 +30,11 @@ function VoidMetodoSemParametros(call, callback) {
 }
 
 function EnviaIntRecebeInt(call, callback) {
-  callback(null, {message: 5 + call.request.name});
+  callback(null, {message: 5});
 }
 
 function EnviaLongRecebeLong(call, callback) {
-  callback(null, {message: 5000000 + call.request.message});
+  callback(null, {message: 5000000});
 }
 
 function EnviaLong8RecebeLong(call, callback) {
@@ -45,11 +45,11 @@ function EnviaStringPotencia10RecebeString(call, callback) {
   callback(null, {message: 'Resposta em forma de String'});
 }
 
-function EnviaArrayGiganteRecebeString(call, callback){
-  callback(null, {message: "Resposta em forma de String"});
+function EnviaArrayIntRecebeInt(call, callback){
+  callback(null, {message: 0});
 }
 
-function EnviaArrayGiganteRecebeArrayGigante(call, callback){
+function EnviaArrayIntRecebeArray(call, callback){
   callback(null, {message: call.request});
 }
 
@@ -64,8 +64,8 @@ function main() {
   server.addService(protoTest.Greeter.service, {EnviaIntRecebeInt: EnviaIntRecebeInt, VoidMetodoSemParametros: VoidMetodoSemParametros,
      EnviaLongRecebeLong: EnviaLongRecebeLong, EnviaLong8RecebeLong:EnviaLong8RecebeLong,
      EnviaStringPotencia10RecebeString:EnviaStringPotencia10RecebeString,
-     EnviaArrayGiganteRecebeString:EnviaArrayGiganteRecebeString,
-     EnviaArrayGiganteRecebeArrayGigante:EnviaArrayGiganteRecebeArrayGigante});
+     EnviaArrayIntRecebeInt:EnviaArrayIntRecebeInt,
+     EnviaArrayIntRecebeArray:EnviaArrayIntRecebeArray});
   server.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
   server.start();
   console.log("Iniciou")
