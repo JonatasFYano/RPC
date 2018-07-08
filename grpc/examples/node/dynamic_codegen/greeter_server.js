@@ -26,30 +26,37 @@ var protoTest = grpc.load(PROTO_PATH).helloworld;
  */
 
 function VoidMetodoSemParametros(call, callback) {
+  //console.log("Entrou em ")
   callback(null, {});
 }
 
 function EnviaIntRecebeInt(call, callback) {
+  //console.log("Entrou em EnviaIntRecebeInt")
   callback(null, {message: 5});
 }
 
 function EnviaLongRecebeLong(call, callback) {
+  //console.log("Entrou em EnviaLongRecebeLong")
   callback(null, {message: 5000000});
 }
 
 function EnviaLong8RecebeLong(call, callback) {
+  //console.log("Entrou em EnviaLong8RecebeLong")
   callback(null, {message: 500000000000});
 }
 
 function EnviaStringPotencia10RecebeString(call, callback) {
+  //console.log("Entrou em EnviaStringPotencia10RecebeString")
   callback(null, {message: 'Resposta em forma de String'});
 }
 
 function EnviaArrayIntRecebeInt(call, callback){
+  //console.log("Entrou em EnviaArrayIntRecebeInt")
   callback(null, {message: 0});
 }
 
 function EnviaArrayIntRecebeArray(call, callback){
+  //console.log("Entrou em EnviaArrayIntRecebeArray")
   callback(null, {message: call.request});
 }
 
@@ -66,7 +73,7 @@ function main() {
      EnviaStringPotencia10RecebeString:EnviaStringPotencia10RecebeString,
      EnviaArrayIntRecebeInt:EnviaArrayIntRecebeInt,
      EnviaArrayIntRecebeArray:EnviaArrayIntRecebeArray});
-  server.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
+  server.bind('192.168.1.34:8000', grpc.ServerCredentials.createInsecure());
   server.start();
   console.log("Iniciou")
 }

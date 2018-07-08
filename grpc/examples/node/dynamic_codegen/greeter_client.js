@@ -46,7 +46,7 @@ function main() {
   console.log("************************")
   time = process.hrtime();
   client.EnviaIntRecebeInt({name: variavel}, function(err, response) {
-    console.log(response.message)
+    //console.log(response.message)
   });
   diff = process.hrtime(time);
   console.log(`#EnviaIntRecebeInt ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}`);
@@ -58,7 +58,7 @@ function main() {
   console.log("************************")
   time = process.hrtime();
   client.EnviaLongRecebeLong({message: variavelLong}, function(err, response) {
-    console.log(response.message)
+   // console.log(response.message)
   });
   diff = process.hrtime(time);
   console.log(`#EnviaLongRecebeLong ${(diff[0] * NS_PER_SEC + diff[1])/MS_PER_SEC}`);
